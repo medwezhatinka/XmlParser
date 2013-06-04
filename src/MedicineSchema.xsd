@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://xml.netbeans.org/schema/MedicineSchema"
+    xmlns:tns="http://xml.netbeans.org/schema/MedicineSchema"
+    elementFormDefault="qualified">
+    <xsd:complexType name="Medicament">
+        <xsd:sequence>
+            <xsd:element name="Name" type="xsd:string"/>
+            <xsd:element name="Pharm" nillable="false" type="xsd:string"/>
+            <xsd:element name="Group" type="xsd:string"/>
+            <xsd:element name="Analog" type="tns:Analogs"/>
+            <xsd:element name="Version" type="tns:Version" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Version">
+        <xsd:sequence>
+            <xsd:element name="Type" type="tns:MedVersion"/>
+            <xsd:element name="Producer" maxOccurs="unbounded" type="tns:Producer"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Producer">
+        <xsd:sequence>
+            <xsd:element name="Certificate" type="tns:Certificate"/>
+            <xsd:element name="Package" type="tns:Package"/>
+            <xsd:element name="Dosage" type="tns:Dosage"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Certificate">
+        <xsd:sequence>
+            <xsd:element name="ID" type="tns:SertificateID"/>
+            <xsd:element name="DateOfIssue" type="xsd:date"/>
+            <xsd:element name="DateOfExpiry" type="xsd:date"/>
+            <xsd:element name="Authority" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Package">
+        <xsd:sequence>
+            <xsd:element name="Type" type="xsd:string"/>
+            <xsd:element name="Count" type="tns:count"/>
+            <xsd:element name="Prise" type="tns:prise"/>
+            <xsd:element name="CountInPack" type="tns:count"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Dosage">
+        <xsd:sequence>
+            <xsd:element name="Dose" type="tns:dose"/>
+            <xsd:element name="Reception" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="Analogs">
+        <xsd:list itemType="xsd:string"/>
+    </xsd:simpleType>
+    <xsd:element name="Medicine">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Medication" maxOccurs="unbounded" type="tns:Medicament"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:simpleType name="MedGroup">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="антибиотики"/>
+            <xsd:enumeration value="жаропонижающие"/>
+            <xsd:enumeration value="болеутоляющие"/>
+            <xsd:enumeration value="витамины"/>
+            <xsd:enumeration value="адсорбирующие"/>
+            <xsd:enumeration value="антидипресанты"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="MedVersion">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="таблетки"/>
+            <xsd:enumeration value="капсулы"/>
+            <xsd:enumeration value="порошок"/>
+            <xsd:enumeration value="капли"/>
+            <xsd:enumeration value="драже"/>
+            <xsd:enumeration value="ампулы"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="SertificateID">
+        <xsd:restriction base="xsd:ID">
+            <xsd:pattern value="[A-Z]{1}[0-9]{3}[a-zA-Z]*"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="count">
+        <xsd:restriction base="xsd:int">
+        <xsd:minInclusive value="1"/>
+        <xsd:maxInclusive value="300"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="prise">
+        <xsd:restriction base="xsd:decimal">
+        <xsd:minExclusive value="0"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="dose">
+        <xsd:restriction base="xsd:float">
+            <xsd:minExclusive value="0"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

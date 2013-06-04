@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : MedicineSchema.xml
+    Created on : June 4, 2013, 5:30 PM
+    Author     : Alina_Shumel
+    Description:
+        Purpose of the document follows.
+-->
+
+<ns0:Medicine  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+               xmlns:ns0='http://xml.netbeans.org/schema/MedicineSchema'
+               xsi:schemaLocation='http://xml.netbeans.org/schema/MedicineSchema MedicineSchema.xsd'>
+    <ns0:Medication>
+        <ns0:Name>Азитромицин</ns0:Name>
+        <ns0:Pharm>Плива</ns0:Pharm>
+        <ns0:Group>антибиотики</ns0:Group>
+        <ns0:Analog>Сумамед Азивок Зитроцин Хемомицин</ns0:Analog>
+        <ns0:Version>
+            <ns0:Type>таблетки</ns0:Type>
+            <ns0:Producer>
+                <ns0:Certificate>
+                    <ns0:ID>A002st</ns0:ID>
+                    <ns0:DateOfIssue>2000-03-14</ns0:DateOfIssue>
+                    <ns0:DateOfExpiry>2020-03-13</ns0:DateOfExpiry>
+                    <ns0:Authority>Institution1</ns0:Authority>
+                </ns0:Certificate>
+                <ns0:Package>
+                    <ns0:Type>блистер</ns0:Type>
+                    <ns0:Count>3</ns0:Count>
+                    <ns0:Prise>25000</ns0:Prise>
+                    <ns0:CountInPack>1</ns0:CountInPack>
+                </ns0:Package>
+                <ns0:Dosage>
+                    <ns0:Dose>0.5</ns0:Dose>
+                    <ns0:Reception>1 раз в день, продолжительность лечения 5 дней</ns0:Reception>
+                </ns0:Dosage>
+            </ns0:Producer>
+            <ns0:Producer>
+                <ns0:Certificate>
+                    <ns0:ID>A002</ns0:ID>
+                    <ns0:DateOfIssue>2002-03-14</ns0:DateOfIssue>
+                    <ns0:DateOfExpiry>2022-03-13</ns0:DateOfExpiry>
+                    <ns0:Authority>Institution1</ns0:Authority>
+                </ns0:Certificate>
+                <ns0:Package>
+                    <ns0:Type>блистер</ns0:Type>
+                    <ns0:Count>6</ns0:Count>
+                    <ns0:Prise>50000</ns0:Prise>
+                    <ns0:CountInPack>1</ns0:CountInPack>
+                </ns0:Package>
+                <ns0:Dosage>
+                    <ns0:Dose>0.125</ns0:Dose>
+                    <ns0:Reception>не знаю</ns0:Reception>
+                </ns0:Dosage>
+            </ns0:Producer>
+        </ns0:Version>
+        <ns0:Version>
+            <ns0:Type>капсулы</ns0:Type>
+            <ns0:Producer>
+                <ns0:Certificate>
+                    <ns0:ID>B345</ns0:ID>
+                    <ns0:DateOfIssue>2001-12-12</ns0:DateOfIssue>
+                    <ns0:DateOfExpiry>2015-02-12</ns0:DateOfExpiry>
+                    <ns0:Authority>Institution2</ns0:Authority>
+                </ns0:Certificate>
+                <ns0:Package>
+                    <ns0:Type>блистер</ns0:Type>
+                    <ns0:Count>6</ns0:Count>
+                    <ns0:Prise>60500</ns0:Prise>
+                    <ns0:CountInPack>1</ns0:CountInPack>
+                </ns0:Package>
+                <ns0:Dosage>
+                    <ns0:Dose>0.25</ns0:Dose>
+                    <ns0:Reception>как угодно</ns0:Reception>
+                </ns0:Dosage>
+            </ns0:Producer>
+        </ns0:Version>
+    </ns0:Medication>
+    <ns0:Medication>
+        <ns0:Name>Аскорбиновая кислота</ns0:Name>
+        <ns0:Pharm>Борисовский завод мед препаратов</ns0:Pharm>
+        <ns0:Group>витамины</ns0:Group>
+        <ns0:Analog>Аскорбин Аскорбит Аскорвит Кантан Кантаксин Цебион Целин Лароскорбин Редоксон Скорбумин Вицин Витаскорбол Биовиталь Целаксон Упсавит</ns0:Analog>
+        <ns0:Version>
+            <ns0:Type>порошок</ns0:Type>
+            <ns0:Producer>
+                <ns0:Certificate>
+                    <ns0:ID>B123</ns0:ID>
+                    <ns0:DateOfIssue>1990-03-03</ns0:DateOfIssue>
+                    <ns0:DateOfExpiry>2020-03-03</ns0:DateOfExpiry>
+                    <ns0:Authority>Минздрав</ns0:Authority>
+                </ns0:Certificate>
+                <ns0:Package>
+                    <ns0:Type>пакетики</ns0:Type>
+                    <ns0:Count>1</ns0:Count>
+                    <ns0:Prise>2000</ns0:Prise>
+                    <ns0:CountInPack>10</ns0:CountInPack>
+                </ns0:Package>
+                <ns0:Dosage>
+                    <ns0:Dose>2</ns0:Dose>
+                    <ns0:Reception>2 раза в день</ns0:Reception>
+                </ns0:Dosage>
+            </ns0:Producer>
+        </ns0:Version>
+    </ns0:Medication>
+   </ns0:Medicine>

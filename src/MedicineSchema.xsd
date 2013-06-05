@@ -8,7 +8,7 @@
         <xsd:sequence>
             <xsd:element name="Name" type="xsd:string"/>
             <xsd:element name="Pharm" nillable="false" type="xsd:string"/>
-            <xsd:element name="Group" type="xsd:string"/>
+            <xsd:element name="Group" type="tns:MedGroup"/>
             <xsd:element name="Analog" type="tns:Analogs"/>
             <xsd:element name="Version" type="tns:Version" maxOccurs="unbounded"/>
         </xsd:sequence>
@@ -36,7 +36,7 @@
     </xsd:complexType>
     <xsd:complexType name="Package">
         <xsd:sequence>
-            <xsd:element name="Type" type="xsd:string"/>
+            <xsd:element name="Type" type="tns:PackageType"/>
             <xsd:element name="Count" type="tns:count"/>
             <xsd:element name="Prise" type="tns:prise"/>
             <xsd:element name="CountInPack" type="tns:count"/>
@@ -97,6 +97,16 @@
     <xsd:simpleType name="dose">
         <xsd:restriction base="xsd:float">
             <xsd:minExclusive value="0"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="PackageType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="блистер"/>
+            <xsd:enumeration value="ампула"/>
+            <xsd:enumeration value="флакон"/>
+            <xsd:enumeration value="банка"/>
+            <xsd:enumeration value="бутылка"/>
+            <xsd:enumeration value="пакетик"/>
         </xsd:restriction>
     </xsd:simpleType>
 </xsd:schema>

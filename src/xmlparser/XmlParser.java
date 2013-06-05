@@ -4,6 +4,17 @@
  */
 package xmlparser;
 
+import by.epam.lab.parser.SaxParser;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.sql.rowset.spi.XmlReader;
+import org.netbeans.xml.schema.medicineschema.Medicament;
+import org.xml.sax.SAXException;
+import org.xml.sax.XMLReader;
+import org.xml.sax.helpers.XMLReaderFactory;
+
 /**
  *
  * @author Alina_Shumel
@@ -15,5 +26,21 @@ public class XmlParser {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        XMLReader reader;
+        SaxParser sp = null;
+        try {
+            reader = XMLReaderFactory.createXMLReader();
+        
+        sp = new SaxParser();
+        reader.setContentHandler(sp);
+            try {
+                reader.parse("src\\MedicineSchema.xml");
+            } catch (IOException ex) {
+                Logger.getLogger(XmlParser.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (SAXException ex) {
+            Logger.getLogger(XmlParser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       ArrayList<Medicament> l = sp.getMedicine();
     }
 }

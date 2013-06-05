@@ -92,7 +92,7 @@
                     <ns0:Authority>Минздрав</ns0:Authority>
                 </ns0:Certificate>
                 <ns0:Package>
-                    <ns0:Type>пакетики</ns0:Type>
+                    <ns0:Type>пакетик</ns0:Type>
                     <ns0:Count>1</ns0:Count>
                     <ns0:Prise>2000</ns0:Prise>
                     <ns0:CountInPack>10</ns0:CountInPack>

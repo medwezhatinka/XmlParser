@@ -7,8 +7,6 @@ package by.epam.lab.parser;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.logging.Level;
@@ -33,7 +31,7 @@ import org.xml.sax.helpers.DefaultHandler;
  *
  * @author Alina_Shumel
  */
-public class SaxParser extends DefaultHandler {
+public class MedicineHandler extends DefaultHandler {
     
     ArrayList<Medicament> medicine = new ArrayList<>();
     Medicament currMedicament;
@@ -154,7 +152,7 @@ public class SaxParser extends DefaultHandler {
                     try {
                         xgc = DatatypeFactory.newInstance().newXMLGregorianCalendar(gc);
                     } catch (DatatypeConfigurationException ex) {
-                        Logger.getLogger(SaxParser.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(MedicineHandler.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     currCertificate.setDateOfIssue(xgc);
                     break;
@@ -167,7 +165,7 @@ public class SaxParser extends DefaultHandler {
                     try {
                         xgce = DatatypeFactory.newInstance().newXMLGregorianCalendar(gce);
                     } catch (DatatypeConfigurationException ex) {
-                        Logger.getLogger(SaxParser.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(MedicineHandler.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     currCertificate.setDateOfExpiry(xgce);
                     break;

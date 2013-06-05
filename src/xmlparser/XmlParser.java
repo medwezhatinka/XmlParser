@@ -4,7 +4,7 @@
  */
 package xmlparser;
 
-import by.epam.lab.parser.SaxParser;
+import by.epam.lab.parser.MedicineHandler;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -27,11 +27,11 @@ public class XmlParser {
     public static void main(String[] args) {
         // TODO code application logic here
         XMLReader reader;
-        SaxParser sp = null;
+        MedicineHandler sp = null;
         try {
             reader = XMLReaderFactory.createXMLReader();
         
-        sp = new SaxParser();
+        sp = new MedicineHandler();
         reader.setContentHandler(sp);
             try {
                 reader.parse("src\\MedicineSchema.xml");

@@ -38,49 +38,10 @@ public class XmlParser {
      */
     public static void main(String[] args) throws FileNotFoundException, XMLStreamException {
         // TODO code application logic here
-        XMLReader reader;
-        MedicineHandler sp = null;
-        try {
-            reader = XMLReaderFactory.createXMLReader();
-        
-        sp = new MedicineHandler();
-        reader.setContentHandler(sp);
-            try {
-                reader.parse("src\\MedicineSchema.xml");
-            } catch (IOException ex) {
-                Logger.getLogger(XmlParser.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } catch (SAXException ex) {
-            Logger.getLogger(XmlParser.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       ArrayList<Medicament> l = sp.getMedicine();
-        ArrayList<Medicament> m;
-       try {
        
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        
-            DocumentBuilder db = dbf.newDocumentBuilder();
-            
-            Document document = db.parse("src\\MedicineSchema.xml");
-            
-             Element root = document.getDocumentElement();
-      m = Analyzer.listBuilder(root);
-             
-        } catch (ParserConfigurationException ex) {
-            Logger.getLogger(XmlParser.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (SAXException ex) {
-            Logger.getLogger(XmlParser.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(XmlParser.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       
-       
-        InputStream input = new FileInputStream("src\\MedicineSchema.xml");
-       XMLInputFactory inputFactory = XMLInputFactory.newInstance();
-       XMLStreamReader reader1 = inputFactory.createXMLStreamReader(input);
       
-        MedicineSTAXParser parser = new MedicineSTAXParser(reader1);
-        
-        ArrayList<Medicament> st = parser.getMedicine();
+       
+       
+      
     }
 }

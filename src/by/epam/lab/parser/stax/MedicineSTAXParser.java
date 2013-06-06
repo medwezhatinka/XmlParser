@@ -31,8 +31,20 @@ import javax.xml.stream.XMLStreamReader;
  */
 public class MedicineSTAXParser {
 
-    ArrayList<Medicament> medicine = new ArrayList<>();
-    ;
+     private XMLStreamReader reader;
+    private InputStream inputStream;
+
+          ArrayList<Medicament> medicine = new ArrayList<>();
+
+    public MedicineSTAXParser(XMLStreamReader reader) {
+    
+        this.reader = reader;
+       
+    }
+    
+          
+    
+    
     Medicament currMedicament;
     Version currVersion;
     Producer currProducer;
@@ -45,13 +57,7 @@ public class MedicineSTAXParser {
     List<Version> currVersions;
     String prefix = "";
 
-    public void parse(InputStream input) throws XMLStreamException {
-        XMLInputFactory inputFactory = XMLInputFactory.newInstance();
-        XMLStreamReader reader = inputFactory.createXMLStreamReader(input);
-        process(reader);
-    }
-
-    public ArrayList<Medicament> process(XMLStreamReader reader) throws XMLStreamException {
+      public ArrayList<Medicament> getMedicine() throws XMLStreamException {
 
         String name = null;
         while (reader.hasNext()) {

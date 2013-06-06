@@ -12,15 +12,15 @@ import java.io.File;
  * @author Soldier
  */
 public abstract class Builder {
-      private File fileXML = null;
+      private String filename  = null;
    
-    public Builder(File fileXML) {
-        this.fileXML = fileXML;
+    public Builder(String filename) {
+        this.filename = filename;
       
     }
 
-    public File getFileXML() {
-        return fileXML;
+    public String getFileName() {
+        return filename;
     }
 
        public abstract Medicine getMedicine();

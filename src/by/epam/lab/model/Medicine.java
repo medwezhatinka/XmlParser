@@ -75,4 +75,13 @@ public class Medicine {
         return this.medication;
     }
 
+    public String showMedicine(){
+        StringBuilder sb = new StringBuilder();
+        for (Medicament medicament : medication) {
+            sb.append(medicament.showMedicament());
+            sb.append("\n\n");
+            
+        }
+            return new String(sb);    
+    }
 }

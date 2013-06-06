@@ -100,5 +100,11 @@ public class Version {
         }
         return this.producer;
     }
-
+public  String showVersion(){
+        StringBuilder sb = new StringBuilder("type : " + type.value()  + "\n");
+        for (Producer prod : producer) {
+        sb.append("Producer: "+ "\n"+prod.showProducer()+"\n");
+    }
+        return new String(sb);
+    }
 }

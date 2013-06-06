@@ -121,5 +121,8 @@ public class Producer {
     public void setDosage(Dosage value) {
         this.dosage = value;
     }
-
+public  String showProducer(){
+        
+        return "Certificate : "+ "\n"+ certificate.showCertificate()  + "\n" + "Dosage: "+"\n" + dosage.showDosage()+ "\n" + "Package: "+ "\n" + _package.showPackage() +"\n" ;
+    }
 }

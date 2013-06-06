@@ -86,4 +86,9 @@ public class Dosage {
         this.reception = value;
     }
 
+    
+    public  String showDosage(){
+        
+        return "Dose: " + dose + "\n" + "Reception: " + reception+ "\n";
+    }
 }

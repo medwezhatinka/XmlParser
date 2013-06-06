@@ -7,9 +7,11 @@ package by.epam.lab.builder;
 import by.epam.lab.model.Medicament;
 import by.epam.lab.model.Medicine;
 import by.epam.lab.parser.dom.Analyzer;
+import by.epam.lab.util.validator.XmlValidator;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
@@ -25,21 +27,33 @@ import org.xml.sax.SAXException;
  */
 public class DOMBuilder extends Builder {
 
-    public DOMBuilder(File fileXML) {
-        super(fileXML);
+    public DOMBuilder(String filename) {
+        super(filename);
     }
+
+   
 
     @Override
     public Medicine getMedicine() {
-        Medicine  medicine = new Medicine();
+       
         try {
+            ResourceBundle resource = ResourceBundle.getBundle("configuration");
+            
+            if (XmlValidator.validate(getFileName(), resource.getString("xsd")))
+                {
+                
+           Medicine  medicine = new Medicine();
             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
             DocumentBuilder db = dbf.newDocumentBuilder();
-            Document document = db.parse(getFileXML());
+            Document document = db.parse(getFileName());
             Element root = document.getDocumentElement();
             List<Medicament> medicaments = medicine.getMedication();
             medicaments.addAll(Analyzer.listBuilder(root));
+            return medicine;
+             }
+           
+             
            
         } catch (SAXException ex) {
             Logger.getLogger(DOMBuilder.class.getName()).log(Level.SEVERE, null, ex);
@@ -48,8 +62,8 @@ public class DOMBuilder extends Builder {
         } catch (ParserConfigurationException ex) {
             Logger.getLogger(DOMBuilder.class.getName()).log(Level.SEVERE, null, ex);
         }
- return medicine;
-
+ 
+   return null;
     }
 }
 

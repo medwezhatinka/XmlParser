@@ -4,8 +4,6 @@
 // Any modifications to this file will be lost upon recompilation of the source schema. 
 // Generated on: 2013.06.05 at 02:05:01 PM FET 
 //
-
-
 package by.epam.lab.model;
 
 import java.util.ArrayList;
@@ -16,12 +14,12 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlList;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
  * <p>Java class for Medicament complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
+ * <p>The following schema fragment specifies the expected content contained
+ * within this class.
+ *
  * <pre>
  * &lt;complexType name="Medicament">
  *   &lt;complexContent>
@@ -37,8 +35,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "Medicament", propOrder = {
@@ -64,11 +62,9 @@ public class Medicament {
 
     /**
      * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is {@link String }
+     *
      */
     public String getName() {
         return name;
@@ -76,11 +72,9 @@ public class Medicament {
 
     /**
      * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is {@link String }
+     *
      */
     public void setName(String value) {
         this.name = value;
@@ -88,11 +82,9 @@ public class Medicament {
 
     /**
      * Gets the value of the pharm property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is {@link String }
+     *
      */
     public String getPharm() {
         return pharm;
@@ -100,11 +92,9 @@ public class Medicament {
 
     /**
      * Sets the value of the pharm property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is {@link String }
+     *
      */
     public void setPharm(String value) {
         this.pharm = value;
@@ -112,11 +102,9 @@ public class Medicament {
 
     /**
      * Gets the value of the group property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link MedGroup }
-     *     
+     *
+     * @return possible object is {@link MedGroup }
+     *
      */
     public MedGroup getGroup() {
         return group;
@@ -124,11 +112,9 @@ public class Medicament {
 
     /**
      * Sets the value of the group property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link MedGroup }
-     *     
+     *
+     * @param value allowed object is {@link MedGroup }
+     *
      */
     public void setGroup(MedGroup value) {
         this.group = value;
@@ -136,25 +122,22 @@ public class Medicament {
 
     /**
      * Gets the value of the analog property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the analog property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
+     *
+     * <p> This accessor method returns a reference to the live list, not a
+     * snapshot. Therefore any modification you make to the returned list will
+     * be present inside the JAXB object. This is why there is not a
+     * <CODE>set</CODE> method for the analog property.
+     *
+     * <p> For example, to add a new item, do as follows:
      * <pre>
      *    getAnalog().add(newItem);
      * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
+     *
+     *
+     * <p> Objects of the following type(s) are allowed in the list
      * {@link String }
-     * 
-     * 
+     *
+     *
      */
     public List<String> getAnalog() {
         if (analog == null) {
@@ -165,25 +148,22 @@ public class Medicament {
 
     /**
      * Gets the value of the version property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the version property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
+     *
+     * <p> This accessor method returns a reference to the live list, not a
+     * snapshot. Therefore any modification you make to the returned list will
+     * be present inside the JAXB object. This is why there is not a
+     * <CODE>set</CODE> method for the version property.
+     *
+     * <p> For example, to add a new item, do as follows:
      * <pre>
      *    getVersion().add(newItem);
      * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
+     *
+     *
+     * <p> Objects of the following type(s) are allowed in the list
      * {@link Version }
-     * 
-     * 
+     *
+     *
      */
     public List<Version> getVersion() {
         if (version == null) {
@@ -192,4 +172,16 @@ public class Medicament {
         return this.version;
     }
 
+    public String showMedicament() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Name: ")
+                .append(name)
+                .append("\n");
+        for (Version vers : version) {
+            sb.append("Version: " + "\n")
+                    .append(vers.showVersion())
+                    .append("\n");
+        }
+        return new String(sb);
+    }
 }

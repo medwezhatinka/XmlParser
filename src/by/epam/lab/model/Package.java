@@ -135,4 +135,7 @@ public class Package {
         this.countInPack = value;
     }
 
+    public String showPackage(){
+        return "Type:  "+ type +"\n"+ "Count: " + count + "\n" +  "Prise: " + prise+ "\n";
+    }
 }

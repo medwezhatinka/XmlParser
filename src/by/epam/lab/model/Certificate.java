@@ -158,5 +158,9 @@ public class Certificate {
     public void setAuthority(String value) {
         this.authority = value;
     }
-
+ public  String showCertificate(){
+        
+        return "ID : " + id  + "\n" + "Date of issue: " + dateOfIssue.toString()+ "\n" + "Date of expiry: " + dateOfExpiry.toString() + "\n" 
+                + "Authority: " + authority;
+    }
 }

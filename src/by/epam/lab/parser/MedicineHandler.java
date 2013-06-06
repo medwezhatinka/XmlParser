@@ -7,13 +7,9 @@ package by.epam.lab.parser;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
+import by.epam.lab.constant.elementname.ElementName;
+import by.epam.lab.util.Helper;
 import org.netbeans.xml.schema.medicineschema.Certificate;
 import org.netbeans.xml.schema.medicineschema.Dosage;
 import org.netbeans.xml.schema.medicineschema.MedGroup;
@@ -32,8 +28,8 @@ import org.xml.sax.helpers.DefaultHandler;
  * @author Alina_Shumel
  */
 public class MedicineHandler extends DefaultHandler {
-    
-    ArrayList<Medicament> medicine = new ArrayList<>();
+
+    ArrayList<Medicament> medicine;
     Medicament currMedicament;
     Version currVersion;
     Producer currProducer;
@@ -45,149 +41,129 @@ public class MedicineHandler extends DefaultHandler {
     List<String> currAnalogs;
     List<Producer> currProducers;
     List<Version> currVersions;
-    
+
     public ArrayList<Medicament> getMedicine() {
         return medicine;
     }
-    
+
     @Override
     public void startDocument() throws SAXException {
-        System.out.println("Start parsing");
+        medicine = new ArrayList<>();
     }
-    
+
     @Override
     public void endDocument() throws SAXException {
-        System.out.println("End parsing");
+        System.out.println("Hurray!");
     }
-    
+
     @Override
     public void startElement(String uri, String localName, String qName, Attributes atts) throws SAXException {
-        switch (localName) {
-            case "Medication":
+
+        switch (qName) {
+            case ElementName.MEDICATION:
                 currMedicament = new Medicament();
                 currAnalogs = currMedicament.getAnalog();
                 currVersions = currMedicament.getVersion();
                 break;
-            case "Version":
+            case ElementName.MEDICAMENT_VERSION:
                 currVersion = new Version();
                 currProducers = currVersion.getProducer();
                 currClass = currVersion.getClass().getSimpleName();
                 break;
-            case "Producer":
+            case ElementName.VERSION_PRODUCER:
                 currProducer = new Producer();
                 break;
-            case "Certificate":
+            case ElementName.PRODUCER_CERTIFICATE:
                 currCertificate = new Certificate();
                 break;
-            case "Package":
+            case ElementName.PRODUCER_PACKAGE:
                 currPackage = new Package();
                 currClass = currPackage.getClass().getSimpleName();
                 break;
-            case "Dosage":
+            case ElementName.PRODUCER_DOSAGE:
                 currDosage = new Dosage();
                 break;
-            
+
         }
-        currElement = localName;
+        currElement = qName;
     }
-    
+
     @Override
     public void endElement(String uri, String localName, String qName) throws SAXException {
-        if (localName.equals("Medication")) {
+        if (qName.equals(ElementName.MEDICATION)) {
             medicine.add(currMedicament);
             currElement = null;
         }
-        if (localName.equals("Version")) {
+        if (qName.equals(ElementName.MEDICAMENT_VERSION)) {
             currVersions.add(currVersion);
-            
+
         }
-        if (localName.equals("Producer")) {
+        if (qName.equals(ElementName.VERSION_PRODUCER)) {
             currProducer.setCertificate(currCertificate);
             currProducer.setPackage(currPackage);
             currProducer.setDosage(currDosage);
-        }
-        if (localName.equals("Producer")) {
             currProducers.add(currProducer);
-            
         }
         currElement = null;
     }
-    
+
     @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
+       
         String value = new String(ch, start, length);
-        System.out.println("Value " + new String(ch, start, length));
+        
         if (currElement != null) {
-            
-            
+
+
             switch (currElement) {
-                case "Name":
+                case ElementName.MEDICAMENT_NAME:
                     currMedicament.setName(value);
                     break;
-                case "Pharm":
+                case ElementName.MEDICAMENT_PHARM:
                     currMedicament.setPharm(value);
                     break;
-                case "Group":
+                case ElementName.MEDICAMENT_GROUP:
                     currMedicament.setGroup(MedGroup.fromValue(value));
                     break;
-                case "Analog":
+                case ElementName.MEDICAMENT_ANALOG:
                     currAnalogs.addAll(Arrays.asList(value.split(" ")));
                     break;
-                case "ID":
+                case ElementName.CERTIFICATE_ID:
                     currCertificate.setID(value);
                     break;
-                case "Type":
-                    if (currClass.equals("Version")) {
+                case ElementName.TYPE:
+                    if (currClass.equals(ElementName.VERSION_CLASSNAME)) {
                         currVersion.setType(MedVersion.fromValue(value));
-                    } else if (currClass.equals("Package")) {
+                    } else if (currClass.equals(ElementName.PACKAGE_CLASSNAME)) {
                         currPackage.setType(PackageType.fromValue(value));
                     }
                     break;
-                case "DateOfIssue":
-                    GregorianCalendar gc = (GregorianCalendar) GregorianCalendar.getInstance();
-                    gc.set(Integer.valueOf(value.substring(0, 4)),
-                            Integer.valueOf(value.substring(5, 7)),
-                            Integer.valueOf(value.substring(8, 10)));
-                    XMLGregorianCalendar xgc = null;
-                    try {
-                        xgc = DatatypeFactory.newInstance().newXMLGregorianCalendar(gc);
-                    } catch (DatatypeConfigurationException ex) {
-                        Logger.getLogger(MedicineHandler.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    currCertificate.setDateOfIssue(xgc);
+                case ElementName.CERTIFICATE_DATEOFISSUE:
+
+                    currCertificate.setDateOfIssue(Helper.getDate(value));
                     break;
-                 case "DateOfExpiry":
-                    GregorianCalendar gce = (GregorianCalendar) GregorianCalendar.getInstance();
-                    gce.set(Integer.valueOf(value.substring(0, 4)),
-                            Integer.valueOf(value.substring(5, 7)),
-                            Integer.valueOf(value.substring(8, 10)));
-                    XMLGregorianCalendar xgce = null;
-                    try {
-                        xgce = DatatypeFactory.newInstance().newXMLGregorianCalendar(gce);
-                    } catch (DatatypeConfigurationException ex) {
-                        Logger.getLogger(MedicineHandler.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    currCertificate.setDateOfExpiry(xgce);
+                case ElementName.CERTIFICATE_DATEOFEXPIRY:
+                    currCertificate.setDateOfExpiry(Helper.getDate(value));
                     break;
-                case "Authority":
+                case ElementName.CERTIFICATE_AUTHORITY:
                     currCertificate.setAuthority(value);
                     break;
-                case "Count":
+                case ElementName.PACKAGE_COUNT:
                     currPackage.setCount(Integer.valueOf(value));
                     break;
-                case "Prise":
+                case ElementName.PACKAGE_PRISE:
                     currPackage.setPrise(BigDecimal.valueOf(Long.valueOf(value)));
                     break;
-                case "CountInPack":
+                case ElementName.PACKAGE_COUNTINPACK:
                     currPackage.setCountInPack(Integer.valueOf(value));
                     break;
-                case "Dose":
+                case ElementName.DOSAGE_DOSE:
                     currDosage.setDose(Float.valueOf(value));
                     break;
-                case "Reception":
+                case ElementName.DOSAGE_RECEPTION:
                     currDosage.setReception(value);
                     break;
-               
+
             }
         }
     }

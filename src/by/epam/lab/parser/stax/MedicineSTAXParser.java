@@ -15,6 +15,7 @@ import by.epam.lab.model.Producer;
 import by.epam.lab.model.Version;
 import by.epam.lab.util.Helper;
 import java.io.InputStream;
+import by.epam.lab.model.Package;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,12 +31,13 @@ import javax.xml.stream.XMLStreamReader;
  */
 public class MedicineSTAXParser {
 
-    ArrayList<Medicament> medicine= new ArrayList<>();;
+    ArrayList<Medicament> medicine = new ArrayList<>();
+    ;
     Medicament currMedicament;
     Version currVersion;
     Producer currProducer;
     Certificate currCertificate;
-    by.epam.lab.model.Package currPackage;
+    Package currPackage;
     Dosage currDosage;
     String currClass;
     List<String> currAnalogs;
@@ -56,14 +58,14 @@ public class MedicineSTAXParser {
             int type = reader.next();
 
             switch (type) {
-               
+
                 case XMLStreamConstants.START_ELEMENT:
 
-                    
-                    if (reader.getNamespaceCount()>1) {
-                         prefix = reader.getNamespacePrefix(1);
+
+                    if (reader.getNamespaceCount() > 1) {
+                        prefix = reader.getNamespacePrefix(1);
                     }
-                   name = prefix + ":" + reader.getLocalName();
+                    name = prefix + ":" + reader.getLocalName();
                     switch (name) {
                         case ElementName.MEDICATION:
                             currMedicament = new Medicament();
@@ -92,15 +94,15 @@ public class MedicineSTAXParser {
                             break;
 
                     }
-                   
+
                     break;
                 case XMLStreamConstants.END_ELEMENT:
-                   name = prefix+":" + reader.getLocalName();
-                        
-                    
+                    name = prefix + ":" + reader.getLocalName();
+
+
                     if (name.equals(ElementName.MEDICATION)) {
                         medicine.add(currMedicament);
-                       
+
                     }
                     if (name.equals(ElementName.MEDICAMENT_VERSION)) {
                         currVersions.add(currVersion);
@@ -112,8 +114,8 @@ public class MedicineSTAXParser {
                         currProducer.setDosage(currDosage);
                         currProducers.add(currProducer);
                     }
-                   
-                   name = null;
+
+                    name = null;
                     break;
 
                 case XMLStreamConstants.CHARACTERS:

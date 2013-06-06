@@ -21,6 +21,7 @@ import java.util.logging.Logger;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -49,7 +50,13 @@ public class STAXBuilder extends Builder {
                 medicaments.addAll(parser.getMedicine());
                 return medicine;
             }
-        } catch (XMLStreamException | FileNotFoundException ex) {
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(STAXBuilder.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SAXException ex) {
+            Logger.getLogger(STAXBuilder.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(STAXBuilder.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (XMLStreamException ex ) {
             Logger.getLogger(STAXBuilder.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {

@@ -29,18 +29,18 @@ import org.xml.sax.helpers.DefaultHandler;
  */
 public class MedicineHandler extends DefaultHandler {
 
-    ArrayList<Medicament> medicine;
-    Medicament currMedicament;
-    Version currVersion;
-    Producer currProducer;
-    Certificate currCertificate;
-    Package currPackage;
-    Dosage currDosage;
-    String currElement;
-    String currClass;
-    List<String> currAnalogs;
-    List<Producer> currProducers;
-    List<Version> currVersions;
+    private ArrayList<Medicament> medicine;
+    private Medicament currMedicament;
+    private Version currVersion;
+    private Producer currProducer;
+    private Certificate currCertificate;
+    private Package currPackage;
+    private Dosage currDosage;
+    private String currElement;
+    private String currClass;
+    private List<String> currAnalogs;
+    private List<Producer> currProducers;
+    private List<Version> currVersions;
 
     public ArrayList<Medicament> getMedicine() {
         return medicine;
@@ -109,9 +109,9 @@ public class MedicineHandler extends DefaultHandler {
 
     @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
-       
+
         String value = new String(ch, start, length);
-        
+
         if (currElement != null) {
 
 

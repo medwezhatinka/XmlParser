@@ -6,12 +6,15 @@ package by.epam.lab.runner;
 
 import by.epam.lab.model.Medicine;
 import by.epam.lab.parser.ParserManager;
+import by.epam.lab.util.transformer.Transform;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
 
 /**
  *
@@ -23,6 +26,13 @@ public class Run {
      * @param args the command line arguments
      */
     public static void main(String[] args)  {
+        try {
+            Transform.transformXml();
+        } catch (TransformerConfigurationException ex) {
+            Logger.getLogger(Run.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (TransformerException ex) {
+            Logger.getLogger(Run.class.getName()).log(Level.SEVERE, null, ex);
+        }
         try {        
             // TODO code application logic here
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));

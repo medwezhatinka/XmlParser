@@ -31,33 +31,29 @@ import javax.xml.stream.XMLStreamReader;
  */
 public class MedicineSTAXParser {
 
-     private XMLStreamReader reader;
+    private XMLStreamReader reader;
     private InputStream inputStream;
-
-          ArrayList<Medicament> medicine = new ArrayList<>();
+    ArrayList<Medicament> medicine = new ArrayList<>();
+     private Medicament currMedicament;
+    private Version currVersion;
+    private Producer currProducer;
+    private Certificate currCertificate;
+    private Package currPackage;
+    private Dosage currDosage;
+    private String currClass;
+    private List<String> currAnalogs;
+    private List<Producer> currProducers;
+    private List<Version> currVersions;
+    private String prefix = "";
 
     public MedicineSTAXParser(XMLStreamReader reader) {
-    
-        this.reader = reader;
-       
-    }
-    
-          
-    
-    
-    Medicament currMedicament;
-    Version currVersion;
-    Producer currProducer;
-    Certificate currCertificate;
-    Package currPackage;
-    Dosage currDosage;
-    String currClass;
-    List<String> currAnalogs;
-    List<Producer> currProducers;
-    List<Version> currVersions;
-    String prefix = "";
 
-      public ArrayList<Medicament> getMedicine() throws XMLStreamException {
+        this.reader = reader;
+
+    }
+   
+
+    public ArrayList<Medicament> getMedicine() throws XMLStreamException {
 
         String name = null;
         while (reader.hasNext()) {

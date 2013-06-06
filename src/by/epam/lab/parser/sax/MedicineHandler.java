@@ -2,23 +2,23 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package by.epam.lab.parser;
+package by.epam.lab.parser.sax;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import by.epam.lab.constant.elementname.ElementName;
+import by.epam.lab.constant.ElementName;
 import by.epam.lab.util.Helper;
-import org.netbeans.xml.schema.medicineschema.Certificate;
-import org.netbeans.xml.schema.medicineschema.Dosage;
-import org.netbeans.xml.schema.medicineschema.MedGroup;
-import org.netbeans.xml.schema.medicineschema.MedVersion;
-import org.netbeans.xml.schema.medicineschema.Medicament;
-import org.netbeans.xml.schema.medicineschema.Producer;
-import org.netbeans.xml.schema.medicineschema.Version;
-import org.netbeans.xml.schema.medicineschema.Package;
-import org.netbeans.xml.schema.medicineschema.PackageType;
+import by.epam.lab.model.Certificate;
+import by.epam.lab.model.Dosage;
+import by.epam.lab.model.MedGroup;
+import by.epam.lab.model.MedVersion;
+import by.epam.lab.model.Medicament;
+import by.epam.lab.model.Producer;
+import by.epam.lab.model.Version;
+import by.epam.lab.model.Package;
+import by.epam.lab.model.PackageType;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;

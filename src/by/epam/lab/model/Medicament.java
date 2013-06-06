@@ -6,7 +6,7 @@
 //
 
 
-package org.netbeans.xml.schema.medicineschema;
+package by.epam.lab.model;
 
 import java.util.ArrayList;
 import java.util.List;

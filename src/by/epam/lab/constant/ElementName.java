@@ -1,7 +1,7 @@
-package by.epam.lab.constant.elementname;
+package by.epam.lab.constant;
 
-import org.netbeans.xml.schema.medicineschema.Version;
-import org.netbeans.xml.schema.medicineschema.Package;
+import by.epam.lab.model.Version;
+import by.epam.lab.model.Package;
 
 /*
  * To change this template, choose Tools | Templates

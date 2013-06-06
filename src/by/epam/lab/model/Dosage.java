@@ -6,7 +6,7 @@
 //
 
 
-package org.netbeans.xml.schema.medicineschema;
+package by.epam.lab.model;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;

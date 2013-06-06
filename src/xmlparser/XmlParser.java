@@ -4,13 +4,18 @@
  */
 package xmlparser;
 
-import by.epam.lab.parser.MedicineHandler;
+import by.epam.lab.parser.sax.MedicineHandler;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.sql.rowset.spi.XmlReader;
-import org.netbeans.xml.schema.medicineschema.Medicament;
+import by.epam.lab.model.Medicament;
+import by.epam.lab.parser.dom.Analyzer;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.XMLReaderFactory;
@@ -42,5 +47,25 @@ public class XmlParser {
             Logger.getLogger(XmlParser.class.getName()).log(Level.SEVERE, null, ex);
         }
        ArrayList<Medicament> l = sp.getMedicine();
+        ArrayList<Medicament> m;
+       try {
+       
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            
+            Document document = db.parse("src\\MedicineSchema.xml");
+            
+             Element root = document.getDocumentElement();
+      m = Analyzer.listBuilder(root);
+             
+        } catch (ParserConfigurationException ex) {
+            Logger.getLogger(XmlParser.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SAXException ex) {
+            Logger.getLogger(XmlParser.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(XmlParser.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
     }
 }

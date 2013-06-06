@@ -6,7 +6,7 @@
 //
 
 
-package org.netbeans.xml.schema.medicineschema;
+package by.epam.lab.model;
 
 import java.math.BigDecimal;
 import javax.xml.bind.annotation.XmlAccessType;

@@ -8,7 +8,6 @@ import by.epam.lab.model.Medicament;
 import by.epam.lab.model.Medicine;
 import by.epam.lab.parser.dom.Analyzer;
 import by.epam.lab.util.validator.XmlValidator;
-import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -37,7 +36,7 @@ public class DOMBuilder extends Builder {
     public Medicine getMedicine() {
        
         try {
-            ResourceBundle resource = ResourceBundle.getBundle("configuration");
+            ResourceBundle resource = ResourceBundle.getBundle("propertie.configuration");
             
             if (XmlValidator.validate(getFileName(), resource.getString("xsd")))
                 {

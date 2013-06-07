@@ -34,7 +34,7 @@ public class SAXBuilder extends Builder{
     public Medicine getMedicine() {
       
         try {
-             ResourceBundle resource = ResourceBundle.getBundle("configuration");
+             ResourceBundle resource = ResourceBundle.getBundle("propertie.configuration");
             
             if (XmlValidator.validate(getFileName(), resource.getString("xsd")))
                 {

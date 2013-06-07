@@ -26,13 +26,7 @@ public class Run {
      * @param args the command line arguments
      */
     public static void main(String[] args)  {
-        try {
-            Transform.transformXml();
-        } catch (TransformerConfigurationException ex) {
-            Logger.getLogger(Run.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (TransformerException ex) {
-            Logger.getLogger(Run.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
         try {        
             // TODO code application logic here
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));

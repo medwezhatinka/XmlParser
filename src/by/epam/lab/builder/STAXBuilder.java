@@ -8,12 +8,10 @@ import by.epam.lab.model.Medicament;
 import by.epam.lab.model.Medicine;
 import by.epam.lab.parser.stax.MedicineSTAXParser;
 import by.epam.lab.util.validator.XmlValidator;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -38,7 +36,7 @@ public class STAXBuilder extends Builder {
 
         InputStream input = null;
         try {
-            ResourceBundle resource = ResourceBundle.getBundle("configuration");
+            ResourceBundle resource = ResourceBundle.getBundle("propertie.configuration");
 
             if (XmlValidator.validate(getFileName(), resource.getString("xsd"))) {
                 Medicine medicine = new Medicine();

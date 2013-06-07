@@ -18,10 +18,10 @@ import javax.xml.transform.stream.StreamSource;
  */
 public class Transform {
     
-    public  static void transformXml() throws TransformerConfigurationException, TransformerException{
-        ResourceBundle resource = ResourceBundle.getBundle("configuration");
+    public  static void transformXml(String input, String output) throws TransformerConfigurationException, TransformerException{
+        ResourceBundle resource = ResourceBundle.getBundle("propertie.configuration");
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer(new StreamSource(resource.getString("xsl")));
-        transformer.transform(new StreamSource("src\\MedicineSchema_1.xml"), new StreamResult("src\\new.xml"));
+        transformer.transform(new StreamSource(input), new StreamResult(output));
     }
 }

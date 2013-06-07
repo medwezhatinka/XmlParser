@@ -22,6 +22,6 @@ public class Transform {
         ResourceBundle resource = ResourceBundle.getBundle("configuration");
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
         Transformer transformer = transformerFactory.newTransformer(new StreamSource(resource.getString("xsl")));
-        transformer.transform(new StreamSource("src\\MedicineSchema.xml"), new StreamResult("src\\new.xml"));
+        transformer.transform(new StreamSource("src\\MedicineSchema_1.xml"), new StreamResult("src\\new.xml"));
     }
 }

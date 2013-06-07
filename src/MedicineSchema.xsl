@@ -15,16 +15,15 @@
          syntax recommendation http://www.w3.org/TR/xslt 
     -->
     <xsl:template match="/">
-        <Medication>
-          <xsl:apply-templates/>
-        </Medication>
+        <Medicament>
+            <xsl:apply-templates  />
+        </Medicament>
     </xsl:template>
-<xsl:template match="Medication">
-    <Medication>
-        <Name><xsl:value-of select="Name"/>  </Name> 
-        <Dosage>
-            <Reception><xsl:value-of select="Reception"/></Reception>
-        </Dosage>
-    </Medication>
+    <xsl:template match="Medication">
+        <Medicament>
+            <Name>
+                <xsl:value-of select="Name" /> 
+            </Name>
+        </Medicament>
     </xsl:template>
 </xsl:stylesheet>

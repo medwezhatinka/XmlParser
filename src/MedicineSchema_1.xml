@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : MedicineSchema.xml
+    Created on : June 4, 2013, 5:30 PM
+    Author     : Alina_Shumel
+    Description:
+        Purpose of the document follows.
+-->
+
+<Medicine  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+               xmlns='http://xml.netbeans.org/schema/MedicineSchema'
+               xsi:schemaLocation='http://xml.netbeans.org/schema/MedicineSchema MedicineSchema.xsd'>
+    <Medication>
+        <Name>Азитромицин</Name>
+        <Pharm>Плива</Pharm>
+        <Group>антибиотики</Group>
+        <Analog>Сумамед Азивок Зитроцин Хемомицин</Analog>
+        <Version>
+            <Type>таблетки</Type>
+            <Producer>
+                <Certificate>
+                    <ID>A002st</ID>
+                    <DateOfIssue>2000-03-14</DateOfIssue>
+                    <DateOfExpiry>2020-03-13</DateOfExpiry>
+                    <Authority>Institution1</Authority>
+                </Certificate>
+                <Package>
+                    <Type>блистер</Type>
+                    <Count>3</Count>
+                    <Prise>25000</Prise>
+                    <CountInPack>1</CountInPack>
+                </Package>
+                <Dosage>
+                    <Dose>0.5</Dose>
+                    <Reception>1 раз в день, продолжительность лечения 5 дней</Reception>
+                </Dosage>
+            </Producer>
+            <Producer>
+                <Certificate>
+                    <ID>A002</ID>
+                    <DateOfIssue>2002-03-14</DateOfIssue>
+                    <DateOfExpiry>2022-03-13</DateOfExpiry>
+                    <Authority>Institution1</Authority>
+                </Certificate>
+                <Package>
+                    <Type>блистер</Type>
+                    <Count>6</Count>
+                    <Prise>50000</Prise>
+                    <CountInPack>1</CountInPack>
+                </Package>
+                <Dosage>
+                    <Dose>0.125</Dose>
+                    <Reception>не знаю</Reception>
+                </Dosage>
+            </Producer>
+        </Version>
+        <Version>
+            <Type>капсулы</Type>
+            <Producer>
+                <Certificate>
+                    <ID>B345</ID>
+                    <DateOfIssue>2001-12-12</DateOfIssue>
+                    <DateOfExpiry>2015-02-12</DateOfExpiry>
+                    <Authority>Institution2</Authority>
+                </Certificate>
+                <Package>
+                    <Type>блистер</Type>
+                    <Count>6</Count>
+                    <Prise>60500</Prise>
+                    <CountInPack>1</CountInPack>
+                </Package>
+                <Dosage>
+                    <Dose>0.25</Dose>
+                    <Reception>как угодно</Reception>
+                </Dosage>
+            </Producer>
+        </Version>
+    </Medication>
+    <Medication>
+        <Name>Аскорбиновая кислота</Name>
+        <Pharm>Борисовский завод мед препаратов</Pharm>
+        <Group>витамины</Group>
+        <Analog>Аскорбин Аскорбит Аскорвит Кантан Кантаксин Цебион Целин Лароскорбин Редоксон Скорбумин Вицин Витаскорбол Биовиталь Целаксон Упсавит</Analog>
+        <Version>
+            <Type>порошок</Type>
+            <Producer>
+                <Certificate>
+                    <ID>B123</ID>
+                    <DateOfIssue>1990-03-03</DateOfIssue>
+                    <DateOfExpiry>2020-03-03</DateOfExpiry>
+                    <Authority>Минздрав</Authority>
+                </Certificate>
+                <Package>
+                    <Type>пакетик</Type>
+                    <Count>1</Count>
+                    <Prise>2000</Prise>
+                    <CountInPack>10</CountInPack>
+                </Package>
+                <Dosage>
+                    <Dose>2</Dose>
+                    <Reception>2 раза в день</Reception>
+                </Dosage>
+            </Producer>
+        </Version>
+    </Medication>
+   </Medicine>
